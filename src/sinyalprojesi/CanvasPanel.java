@@ -9,8 +9,9 @@ import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JSpinner;
+import javax.swing.JPanel;
+
 
 public class CanvasPanel extends JPanel {
 
