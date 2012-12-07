@@ -1,18 +1,25 @@
 package sinyalprojesi;
-//sddas
+
 import java.applet.Applet;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.ComponentOrientation;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Locale;
+import javax.swing.BorderFactory;
 import javax.swing.JApplet;
-import javax.swing.JFrame;   
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.plaf.DimensionUIResource;
 import sinyalprojesi.CanvasPanel;
 import sinyalprojesi.Slider;
 import sinyalprojesi.Spinner;
@@ -24,7 +31,7 @@ public class Main1 extends Applet implements ChangeListener, ItemListener {
     CanvasPanel canvasPanel = new CanvasPanel();
     JPanel panelUst = new JPanel();
     JPanel panelAlt = new JPanel();
-
+    Dimension dimMain = new Dimension(100, 200);
     public Main1() {
         spinner.acıSpinner.addChangeListener(this);
         spinner.fazSpinner.addChangeListener(this);
@@ -35,7 +42,7 @@ public class Main1 extends Applet implements ChangeListener, ItemListener {
         spinner.secim.addItemListener(this);
 
         ChangeListener listenerSlider = new ChangeListener() {
-            @Override
+           @Override
             public void stateChanged(ChangeEvent e) {
                 spinner.acıSpinner.setValue(slider.acıSlider.getValue());
                 spinner.fazSpinner.setValue(slider.fazSlider.getValue());
@@ -43,6 +50,7 @@ public class Main1 extends Applet implements ChangeListener, ItemListener {
                 spinner.yükseklikSpinner.setValue(slider.yükseklikSlider.getValue());
                 spinner.genislikSpinner.setValue(slider.genislikSlider.getValue());
                 spinner.fazAcısıSpinner.setValue(slider.fazAcısıSlider.getValue());
+                spinner.fazSpinner.setComponentOrientation(ComponentOrientation.getOrientation(Locale.FRENCH));
                 //--------
                 canvasPanel.genislik = (int) slider.genislikSlider.getValue();
                 canvasPanel.faz = (int) slider.fazSlider.getValue();
@@ -60,18 +68,20 @@ public class Main1 extends Applet implements ChangeListener, ItemListener {
         slider.genislikSlider.addChangeListener(listenerSlider);
         slider.yükseklikSlider.addChangeListener(listenerSlider);
     }
-    
 
     public void init() {
-        setLayout(new FlowLayout());
-        panelUst.setLayout(new GridLayout(2, 3));
-        panelAlt.setLayout(new GridLayout(1, 1));
+        setLayout(new GridLayout(2, 1));
+       //panelUst.setLayout(new GridLayout(1, 7));
+       // panelUst.setLayout(new FlowLayout(21, 42, 12));
+       panelAlt.setLayout (new GridLayout(1, 1));
+        panelUst.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+        panelAlt.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 10));
+        
         add(panelUst);
         add(panelAlt);
         panelUst.add(slider.panelSlider);
         panelUst.add(spinner.panelSpinner);
         panelAlt.add(canvasPanel);
-
     }
 
     @Override
@@ -90,27 +100,35 @@ public class Main1 extends Applet implements ChangeListener, ItemListener {
             slider.acıSlider.setEnabled(true);
             slider.fazSlider.setEnabled(true);
             slider.genlikSlider.setEnabled(true);
+            slider.genislikSlider.setEnabled(true);
+            slider.fazAcısıSlider.setEnabled(true);
+            slider.yükseklikSlider.setEnabled(true);
             spinner.acıSpinner.setEnabled(true);
             spinner.fazSpinner.setEnabled(true);
             spinner.genlikSpinner.setEnabled(true);
             spinner.genislikSpinner.setEnabled(true);
             spinner.yükseklikSpinner.setEnabled(true);
+            spinner.fazAcısıSpinner.setEnabled(true);
         } else {
             slider.acıSlider.setEnabled(false);
             slider.fazSlider.setEnabled(false);
             slider.genlikSlider.setEnabled(false);
             slider.genislikSlider.setEnabled(false);
             slider.yükseklikSlider.setEnabled(false);
+            slider.fazAcısıSlider.setEnabled(false);
             spinner.acıSpinner.setEnabled(false);
             spinner.genlikSpinner.setEnabled(false);
             spinner.fazSpinner.setEnabled(false);
             spinner.genislikSpinner.setEnabled(false);
             spinner.yükseklikSpinner.setEnabled(false);
+            spinner.fazAcısıSpinner.setEnabled(false);
+
             spinner.acıSpinner.setValue(0);
             spinner.fazSpinner.setValue(0);
             spinner.genlikSpinner.setValue(0);
             spinner.yükseklikSpinner.setValue(0);
             spinner.genislikSpinner.setValue(0);
+            spinner.fazAcısıSpinner.setValue(0);
         }
     }
 }

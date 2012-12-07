@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- You may freely edit this file. See commented blocks below for -->
 <!-- some examples of how to customize the build. -->
@@ -72,3 +73,15 @@
 
     -->
 </project>
+=======
+<project name="countly" default="dist">
+	<description>
+		Ant build script for Titanium Android module countly
+	</description>
+
+	<property name="ti.module.root" location="${basedir}"/>
+	<property file="build.properties" />
+
+	<import file="${titanium.platform}/../module/android/build.xml"/>
+</project>
+>>>>>>> branch 'master' of https://github.com/osoner/Titanium-Android-Count.ly.git

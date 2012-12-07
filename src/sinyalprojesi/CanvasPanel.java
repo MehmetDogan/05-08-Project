@@ -43,17 +43,30 @@ public class CanvasPanel extends JPanel {
             pts[i] = (int) (sines[i] * genlik);
         }
         g.setColor(Color.BLUE);
-        g.drawLine(0, 140, 1000, 140);
+        g.drawLine(0, 157, 1500, 157);//yatay
+        g.drawLine(600,0, 600, 800);//dikey
+        g.drawLine(190,320,990, 0);//Z ekseni
+        for(int i=0;i<400;i++){
+            g.drawLine((i)*20,155,(i)*20, 160);
+        }
+          for(int i=0;i<100;i++){
+            g.drawLine(597,(i*20)-2,603,(i*20)-2);
+        }
+           for(int i=0;i<80;i++){
+            g.drawLine(188+(15*i),318-(6*i), 190+(15*i),323-(6*i));
+        }
+        
+      
       
         g.setColor(Color.red);
-
+        
         for (int i = 1; i < points; i++) {
 
             int x1 = (int) ((i - 1) * hstep);
             int x2 = (int) (i * hstep);
-            int y1 = pts[i - 1] + yükseklik;
-            int y2 = pts[i] + yükseklik;
-            g.drawLine(x1 + faz, y1, x2 + faz, y2);
+            int y1 = pts[i - 1] - yükseklik+158;
+            int y2 = pts[i] - yükseklik+158;
+            g.drawLine(x1 + faz+600, y1, x2 +600+ faz, y2);
         }
     }
 }
